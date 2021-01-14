@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lista de propositos de año nuevo</title>
+
+        <script src="https://unpkg.com/vue@next"></script>
+        <script src="scripts/main.js"></script>
+    </head>
+
+    <body>
+        <div id="titulo">
+            <h1>{{mensaje}}</h1>
+        </div>
+        <div id="app">
+            
+            <ul v-if="propositos.length > 0">
+                <li v-for="(proposito, index) in propositos" :key="index" v-on:dblclick="eliminarPropositos(indice, 1)">
+                    <input v-model = "proposito.hecho" type="checkbox">
+                    <del v-if = "proposito.hecho">{{proposito.texto}}</del>
+                    <span v-else>{{proposito.texto}}</span>
+                </li>
+                <input type="button">     
+            </ul>
+            <span v-else>
+                {{noPropositos}}
+            </span>
+        </div>
+        
+        <script>
+            const mountedApp1 = app.mount("#app");
+            const mountedApp2 = titulo.mount("#titulo");
+        </script>
+    </body>
+</html>
